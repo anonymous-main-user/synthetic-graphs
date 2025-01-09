@@ -1,0 +1,32 @@
+#!/bin/bash -i
+
+mkdir -p ~/log
+cpu=$(num_cores)
+
+sbatch <<EOT
+#!/bin/bash --login
+#SBATCH --mail-type=begin,end,fail
+#SBATCH --mail-user=@uni.lu
+#SBATCH -c ${cpu}
+#SBATCH -n 1
+#SBATCH --mem=0
+#SBATCH --time=2-00:00:00
+#SBATCH -p batch
+#SBATCH --qos=normal
+#SBATCH --output=$HOME/log/serial_test_%j.log   # Standard output and error log
+#SBATCH --job-name=$1
+
+
+pwd; hostname; date; lscpu | grep "^CPU(s):"; lsmem | grep "online memory"
+echo $1
+
+loadmyenv
+source venv/bin/activate
+unset PYTHONPATH
+
+
+time python src/main.py
+
+date
+
+EOT

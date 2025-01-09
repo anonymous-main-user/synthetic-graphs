@@ -1,0 +1,9 @@
+tqdm
+networkx
+scikit-learn
+matplotlib
+textblob
+numpy
+pandas
+python-louvain
+ijson
