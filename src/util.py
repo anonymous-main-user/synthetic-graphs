@@ -135,8 +135,6 @@ def calculate_avg_path_length(UG):
 sanitized_set = {}
 
 
-# TOCHECK: make this at the beginning, it is not stable on parallel execution
-# otherwise
 def sanitize_filename(name):
     sname = ""
     for c in name:
