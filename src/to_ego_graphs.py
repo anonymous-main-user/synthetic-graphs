@@ -14,16 +14,7 @@ def save_ego_graph(G, node, output_folder):
     assert not os.path.exists(ego_graph_path)
     nx.write_gml(ego_graph, ego_graph_path)
 
-    # TOCHECK: this is not used anywhere
 
-    # nodes_data = {n: G.nodes[n] for n in ego_graph.nodes}
-    # attributes_path = os.path.join(output_folder, f"{sanitized_node}_attributes.txt")
-    # with open(attributes_path, "w") as f:
-    #     for n, attrs in nodes_data.items():
-    #         f.write(f"Node: {n}\n")
-    #         for attr, value in attrs.items():
-    #             f.write(f"  {attr}: {value}\n")
-    #         f.write("\n")
 
 
 def save_ego_graph_par(queue, iis, user_nodes, G, output_folder_graphs):
