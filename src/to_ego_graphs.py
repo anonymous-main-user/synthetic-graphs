@@ -46,7 +46,7 @@ def create_ego_graphs(G, dataset_name="enron", output_folder="output/"):
         G = nx.read_gml(global_graph_path)
     user_nodes = [node for node in G.nodes if G.nodes[node].get("type") == "user"]
 
-    # this ensured sanitization is stable, should be done better
+
     for n in sorted(user_nodes):
         sanitize_filename(n)
 
@@ -57,9 +57,6 @@ def create_ego_graphs(G, dataset_name="enron", output_folder="output/"):
         range(len(user_nodes)),
         DEBUG=True,
     )
-    # for node in tqdm(G.nodes, desc="Creating ego graphs"):
-    #     if G.nodes[node].get("type") == "user":
-    #         # print(f'Processing node: {node}')
-    #         save_ego_graph(G, node, output_folder_graphs)
+
 
     print("Ego graphs extraction completed.")
